@@ -163,3 +163,50 @@ bandit7@bandit:~$ cat data.txt | grep millionth
 millionth       [password]
 
 Level 8:
+
+To find the password for level 9 overthewire.org tells us that it is the only line that appears only once. So i assumed the 'uniq' command would be useful, however, this command only removes repeats instead of only outputting unique lines so the syntax of uniq was neccesary to look up. Using the 'cat' command will still output many lines I assume because the terminal will only store one unique string at a time. So instead of using 'cat' using 'sort' will sort strings in alphabetical order first then storing only one string at a time is no longer an issue since all the strings are together and will all be deleted from output. The terminal will look something like:
+
+ubisoftisawful@Test:~$ ssh bandit8@bandit.labs.overthewire.org -p 2220
+-
+-
+-
+bandit8@bandit.labs.overthewire.org's password: 
+-
+-
+-
+bandit8@bandit:~$ ls
+data.txt
+bandit8@bandit:~$ sort data.txt | uniq -u
+[password]
+
+Level 9:
+To find the password for level 10 we need to find a string in a file proceeded by several "==" characters. 2 commands, 'strings', and 'grep' are needed for this. The 'strings' command filters out all non human readable strings and 'grep' returns lines with the prefix we need. The first thing i attempted was without the 'strings' command and it wouldn't even give me non human readable output. I still am not sure what I was doing wrong. However finding the password for level 10 will look something like this:
+
+ubisoftisawful@Test:~$ ssh bandit9@bandit.labs.overthewire.org -p 2220
+-
+-
+-
+bandit9@bandit.labs.overthewire.org's password: 
+-
+-
+-
+bandit9@bandit:~$ ls
+data.txt
+bandit9@bandit:~$ cat data.txt | strings | grep "=="
+========== [nonsense]
+========== passwordk^
+========== is
+========== [password]
+
+Level 10:
+Connecting to level 10 is easy, the same steps from level one are used.
+
+ubisoftisawful@Test:~$ ssh bandit10@bandit.labs.overthewire.org -p 2220
+-
+-
+-
+bandit10@bandit.labs.overthewire.org's password: 
+-
+-
+-
+bandit10@bandit:~$
